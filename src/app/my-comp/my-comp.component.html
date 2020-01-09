@@ -1,0 +1,49 @@
+<div class="container playground">
+  <div class="row">
+    <div class="col-12">
+      <h2>Playground</h2>
+      <!-- PLAYGROUND -->
+      <p [hidden]="name === 'aaron'">hidden?</p>
+      <!-- <p [hidden]="name === 'Aaron'">hidden?</p> will be hidden -->
+      <app-nested></app-nested>
+      <ul>
+        <!-- adds classes to each item with the value of their id -->
+        <li *ngFor="let item of array" [ngClass]="'item-' + item.id">
+          {{ item.id }}
+        </li>
+      </ul>
+      <ul>
+        <!-- adds classes to items based on the decideClass method -->
+        <li *ngFor="let item of array" [ngClass]="decideClass(1)">
+          {{ item.id }}
+        </li>
+      </ul>
+
+      <hr/>
+
+      <h3>Assignment 1</h3>
+      <app-warning-alert></app-warning-alert>
+      <app-success-alert></app-success-alert>
+
+      <hr/>
+
+      <label><h3>Assignment 2</h3></label>
+      <input type="text" class="form-control" [(ngModel)]="username">
+      <p>{{ username }}</p>
+      <button [disabled]="username === '' ? true : false" (click)="onClearUsername($event)" class="btn btn-info">Clear Username</button>
+      <button [disabled]="username === ''" (click)="username = ''" class="btn btn-success">Clear Username</button>
+      
+      <hr/>
+
+      <h3>Assignent 3</h3>
+      <button class="btn btn-danger" (click)="onToggleDetails()">Display Details</button>
+      <p *ngIf="viewDetails" >details are here</p>
+      <div *ngFor="let click of clicks; let i = index"
+      [ngStyle]="{backgroundColor: i >= 4 ? 'blue' : 'transparent'}" 
+      [ngClass]="{'white-text': i >= 4}">{{ click }}</div>
+      <hr/>
+    </div>
+  </div>
+</div>
+
+<!-- <p [ngStyle]="{backgroundColor: getColor()}" >{{catAge}}</p> -->

@@ -1,0 +1,87 @@
+<div class="container notes">
+  <div class="row">
+    <div class="col-12">
+      <h2>Notes</h2>
+
+      <h3>Forms</h3>
+      <p>
+      Must import the FromsModule in order to get the form object from angular
+      </p>
+
+      <h3>Observables</h3>
+      <p>Constructs on which you subscribe to...steam of data you are subscribed to.
+        <br/>
+        An example is this.route.params.subscribe(...) : params in an observable.
+        Examples exists in home component
+      </p>
+
+      <h3>Services & Dependency Injections</h3>
+      <p>Services - methods or storing data. Instead of importing the service and creating and instance 
+        of the service to use it, with angular you use DEPENDENCY INJECTIONS to bring in and use services
+      </p>
+
+      <h3>LifeCycle Hooks</h3>
+      <ul>
+          <li>ngOnChange- called after a bound input property changes</li>
+          <li>ngOnInit- classed once the component is intialized after the constructor</li>
+          <li>ngDoCheck- called during every change detection run (on every event)</li>
+          <li>ngAfterContentInit- called after content has been projected into view</li>
+          <li>ngAfterContentChecked- called every time the projected content has been checked</li>
+          <li>ngAfterViewInit- called after the componenet view has been intialized</li>
+          <li>ngAfterViewChecked- called everytime the view has been checked</li>
+          <li>ngOnDestroy- called once the component is about to be destroyed</li>
+      </ul>
+
+      <!-- PROPERTY BINDING and EVENT BINDING -->
+      
+      <!-- updating appName every keystroke of the userInput -->
+      <label>{{appName}}</label>
+      <!-- $event allows you to pass the date from the event (like jQuery) -->
+      <input type="text" class="form-control" (input)="onUpdateAppName($event)">
+      
+      <!-- essentially turning on and off the disabled attribute -->
+      <!-- onClick event call a method which logic lives in ts file -->
+      <button (click)="onCreateApp()" [disabled]="!allowNewApp" 
+        class="btn btn-primary">Create App
+      </button>
+      
+      <!-- will display the return value of allowNewApp -->
+      <p>{{allowNewApp}}</p>
+      <p [innerText]="allowNewApp"></p>
+      
+      <!-- displaying text depending live with each keystroke-->
+      <p>{{appCreationStatus}}</p>
+
+
+      <!-- DIRECTIVE -->
+      <!-- displays message and app name only when button was clicked b/c we set 
+        appCreated to true when the button is clicked -->
+      <h4>ngIf</h4>
+      <p *ngIf="appCreated; else noApp">App was created, app name is {{appName}}</p>
+      <!-- else not common -->
+      <ng-template #noApp>
+        <p>No app was created in else statement</p>
+      </ng-template>
+
+      <h4>ngStyle</h4>
+      <p [ngStyle]="{backgroundColor: getColor()}" >{{catAge}}</p>
+      <p [ngStyle]="{'background-color': getColor()}" >{{catAge}}</p>
+
+      <h4>ngClass</h4>
+      <p [ngStyle]="{backgroundColor: getColor()}" 
+      [ngClass]="{kitten: catAge === 'kitten'}">{{catAge}}</p>
+
+      <h4>ngFor</h4>
+      <div *ngFor="let app of apps">{{appName}}</div>
+
+      <!-- STRING INTERPOLATION -->
+      <!-- stored variable, hardcoded string, method which 
+          returns a value that can be read as a string -->
+      <h1>{{name}} {{'App'}} {{getAppStatus()}}</h1>
+
+      <!-- TWO WAY BINDING -->
+      <input type="text" class="form-control" [(ngModel)]="myName" />
+      <p>{{myName}}</p>
+    </div>
+  </div>
+</div>

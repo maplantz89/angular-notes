@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="coloum">
+      <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" class="form-control" ngModel name="email" required email  #email="ngModel">
+          <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid email</span>
+        </div>
+        <div class="form-group">
+          <label for="subscription">Choose a Subscription</label>
+          <select id="subscritpion" class="form-control" name="subscription" [ngModel]="defaultSub">
+            <!-- could have done *ngFor....to loop -->
+            <option value="basic">Basic</option>
+            <option value="advanced">Advanced</option>
+            <option value="pro">Pro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" class="form-control" ngModel name="password" #password="ngModel" required>
+          <span class="help-block" *ngIf="!password.valid && password.touched">Please enter a valid password</span>
+        </div>
+        <p *ngIf="!form.valid && form.touched">Form in not valid</p>
+        <button class="btn btn-primary" type=submit>Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

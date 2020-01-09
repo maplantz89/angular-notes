@@ -1,0 +1,10 @@
+.notes{
+  border: rgb(99, 3, 99) 1px dashed; 
+  color: rgb(92, 34, 147);
+  background-color: rgba(255, 240, 223, 0.555);
+  padding: 0 50px; 
+}
+
+h4{
+  text-decoration: underline;
+}
